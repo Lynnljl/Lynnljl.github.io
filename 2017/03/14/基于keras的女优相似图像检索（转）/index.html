@@ -191,7 +191,8 @@
 <p>以前文章写过，在学习到的模型中，输入画像用等级分类的话，可以判断哪个女优与之相似。本篇则会从全结合层的矢量特征开始，计算cos相似度，然后检索相似的画像。</p>
 <p>而且单就图像识别来讲，Keras使用起来比Chainer更方便，所以安装使用Keras框架。</p>
 <p><strong>（注：使用Keras框架的另一个原因是”Keras”的五个字母包含在”Kaiser”当中。）</strong></p>
-<p><img src="http://omsrnhp45.bkt.clouddn.com/v2-d24483f8c96cc1d992604173a4614767_r.jpg" alt=""></p>
+<div align="center"><br><br><img src="http://omsrnhp45.bkt.clouddn.com/v2-d24483f8c96cc1d992604173a4614767_r.jpg" alt=""><br><br></div>
+
 <p>在Keras中，使用了ImageDataGenerator，所以可以轻松扩大数据。</p>
 <p>因为随机抽样的画像集有倾向性或偏移，所以很少会去学习相同的全部数据，否则很容易产生过拟合。</p>
 <p>关于ZCA whitening请参考以下资料：</p>
