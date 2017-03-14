@@ -191,7 +191,7 @@
 <p>以前文章写过，在学习到的模型中，输入画像用等级分类的话，可以判断哪个女优与之相似。本篇则会从全结合层的矢量特征开始，计算cos相似度，然后检索相似的画像。</p>
 <p>而且单就图像识别来讲，Keras使用起来比Chainer更方便，所以安装使用Keras框架。</p>
 <p><strong>（注：使用Keras框架的另一个原因是”Keras”的五个字母包含在”Kaiser”当中。）</strong></p>
-<div align="center"><br><br><img src="http://omsrnhp45.bkt.clouddn.com/v2-d24483f8c96cc1d992604173a4614767_r.jpg" alt=""><br><br></div>
+<center><br><br><img src="http://omsrnhp45.bkt.clouddn.com/v2-d24483f8c96cc1d992604173a4614767_r.jpg" alt=""><br><br></center>
 
 <p>在Keras中，使用了ImageDataGenerator，所以可以轻松扩大数据。</p>
 <p>因为随机抽样的画像集有倾向性或偏移，所以很少会去学习相同的全部数据，否则很容易产生过拟合。</p>
@@ -200,7 +200,7 @@
 <p><a href="http://takatakamanbou.hatenablog.com/entry/2015/02/15/150430" target="_blank" rel="external">CIFAR-10 と ZCA whitening - まんぼう日記</a></p>
 <p><strong>（注：whitening的目的是降低输入的冗余性，希望使特征之间相关性较低，且所有特征具有相同的方差。 ）</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.preprocessing.image <span class="keyword">import</span> ImageDataGenerator</div><div class="line"><span class="comment"># 分别提取数据和标签，存为两个变量</span></div><div class="line">data, label = load_data()</div><div class="line">datagen = ImageDataGenerator(</div><div class="line">    zca_whitening=<span class="keyword">True</span>,</div><div class="line">    rotation_range=<span class="number">10</span>,</div><div class="line">    width_shift_range=<span class="number">0.1</span>,</div><div class="line">    height_shift_range=<span class="number">0.1</span>,</div><div class="line">    horizontal_flip=<span class="keyword">True</span>)</div><div class="line">datagen.fit(data)</div><div class="line"><span class="comment"># 把datagen.flow作为参数传递给模型fit_generator，进行动态数据扩张</span></div><div class="line">model.fit_generator(datagen.flow(data, label, batch_size=<span class="number">32</span>),</div><div class="line">    samples_per_epoch=data.shape[<span class="number">0</span>], nb_epoch=<span class="number">100</span>)</div></pre></td></tr></table></figure>
-<div align="center"><br><br><img src="http://omsrnhp45.bkt.clouddn.com/v2-9d5e19a63a2858b195f6227225838522_b.jpg" alt=""><br><br></div>
+<center><br><br><img src="http://omsrnhp45.bkt.clouddn.com/v2-9d5e19a63a2858b195f6227225838522_b.jpg" alt=""><br><br></center>
 
 <p><strong>脸部画像正面化</strong></p>
 <p>前文中，面部画面检查出后用dlib，这次我们要进一步提取检查出的面部画面特征，把眼睛和嘴巴的位置正面化后进行仿射变换。因为已经安装了openface或facenet，基本上可以按照原样使用。</p>
